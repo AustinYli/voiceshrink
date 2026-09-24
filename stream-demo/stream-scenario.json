@@ -1,0 +1,39 @@
+{
+  "name": "demo-stream-delay",
+  "audio": "stream-order.wav",
+  "expected": {
+    "tool": {
+      "name": "lookup_order"
+    },
+    "arguments": {
+      "order_id": "74821"
+    }
+  },
+  "target": {
+    "type": "python",
+    "callable": "voiceshrink.examples:pause_target",
+    "stream_callable": "voiceshrink.examples:stream_delay_target",
+    "fingerprint": "demo-stream-delay-v1"
+  },
+  "oracle": {
+    "equivalence": "same_category"
+  },
+  "search": {
+    "max_runs": 180,
+    "families": [
+      "chunk_delay",
+      "jitter",
+      "packet_loss",
+      "reorder"
+    ]
+  },
+  "evaluation": {
+    "trials": 1,
+    "baseline_trials": 3,
+    "failure_threshold": 1.0
+  },
+  "streaming": {
+    "enabled": true,
+    "chunk_ms": 20
+  }
+}

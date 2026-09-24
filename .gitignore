@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.voiceshrink/
+demo/
+dist/
+build/
+release/
+.vendor/
+.models/
+real-asr-demo/.models/
+real-asr-demo/order-74821.wav

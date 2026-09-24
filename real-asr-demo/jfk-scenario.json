@@ -1,0 +1,31 @@
+{
+  "name": "real-asr-jfk",
+  "audio": "jfk.wav",
+  "expected": {
+    "transcript_contains": "ask not what your country can do for you"
+  },
+  "target": {
+    "type": "faster-whisper",
+    "model": "tiny.en",
+    "device": "cpu",
+    "compute_type": "int8",
+    "language": "en",
+    "beam_size": 1,
+    "download_root": ".models",
+    "fingerprint": "faster-whisper-1.2.1-tiny.en-int8"
+  },
+  "oracle": {
+    "equivalence": "same_category"
+  },
+  "search": {
+    "max_runs": 45,
+    "max_concurrency": 1,
+    "max_failures": 1,
+    "families": ["gain", "noise", "bandwidth", "codec", "quantize", "speed"]
+  },
+  "evaluation": {
+    "baseline_trials": 1,
+    "trials": 1,
+    "failure_threshold": 1.0
+  }
+}

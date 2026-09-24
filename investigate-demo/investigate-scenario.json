@@ -1,0 +1,31 @@
+{
+  "name": "demo-production-failure",
+  "audio": "failed-call.wav",
+  "expected": {
+    "tool": {
+      "name": "lookup_order"
+    },
+    "arguments": {
+      "order_id": "74821"
+    }
+  },
+  "target": {
+    "type": "python",
+    "callable": "voiceshrink.examples:marker_failure_target",
+    "fingerprint": "demo-marker-v1"
+  },
+  "oracle": {
+    "equivalence": "exact"
+  },
+  "search": {
+    "max_runs": 180
+  },
+  "evaluation": {
+    "trials": 1,
+    "failure_threshold": 1.0
+  },
+  "investigate": {
+    "min_window_ms": 250,
+    "boundary_step_ms": 10
+  }
+}

@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "voiceshrink"
+version = "0.2.6"
+description = "Discover and minimize voice-system failures from known-good audio"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "VoiceShrink contributors"}]
+keywords = ["voice-ai", "speech-recognition", "testing", "fuzzing", "delta-debugging", "audio"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Testing",
+  "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+dependencies = ["numpy>=1.23"]
+
+[project.urls]
+Homepage = "https://github.com/AustinYli/voiceshrink"
+Documentation = "https://github.com/AustinYli/voiceshrink#readme"
+Repository = "https://github.com/AustinYli/voiceshrink"
+Issues = "https://github.com/AustinYli/voiceshrink/issues"
+Changelog = "https://github.com/AustinYli/voiceshrink/blob/main/CHANGELOG.md"
+
+[project.optional-dependencies]
+yaml = ["PyYAML>=6"]
+asr = ["faster-whisper>=1.0"]
+
+[project.scripts]
+voiceshrink = "voiceshrink.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
