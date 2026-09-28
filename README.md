@@ -312,6 +312,6 @@ Bug reports, target adapters, new deterministic mutation families, documentation
 
 VoiceShrink is available under the [MIT License](LICENSE).
 
-## Local release package
+## Release downloads
 
-Validated source and wheel packages are available under `release/`. The source archive includes the README, changelog, roadmap, package code, and test suite. `release/SHA256SUMS.txt` records checksums for transfer verification, and `release/README.md` contains installation and validation commands.
+The [v0.2.6 GitHub Release](https://github.com/AustinYli/voiceshrink/releases/tag/v0.2.6) provides the validated wheel, source archive, and SHA-256 checksums. GitHub also provides source snapshots for the tagged commit.
