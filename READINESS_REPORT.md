@@ -17,7 +17,7 @@ VoiceShrink is technically usable as a local Python package for trusted develope
 
 The audit fixed pair-budget accounting, missing-bundle discovery, malformed integrity-manifest handling, and unsafe integrity paths.
 
-The packaged Windows end-to-end gate completed all three operating workflows from a clean temporary install. Python, command, and real localhost HTTP target execution are covered. The repository includes a Python 3.10–3.13 Linux CI matrix; those hosted jobs require the project to be pushed to a GitHub repository before they can provide independent Linux evidence.
+The packaged Windows end-to-end gate completed all three operating workflows from a clean temporary install. Python, command, and real localhost HTTP target execution are covered. The public repository runs the same suite in a Python 3.10–3.13 Linux CI matrix.
 
 ## Supported environment
 
