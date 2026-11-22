@@ -82,7 +82,6 @@ def _portable_target(scenario: Scenario) -> dict:
 
 
 def _discovery_metrics(scenario: Scenario, discovery: Discovery) -> dict:
-    """Summarize reduction and provenance without making a global-minimum claim."""
     base_duration = read_wav(scenario.audio).duration
     original = complexity(discovery.initial.mutations, base_duration)
     minimal = complexity(discovery.minimal.mutations, base_duration)

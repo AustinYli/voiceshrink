@@ -352,7 +352,6 @@ def _report(issue: str, root: Path) -> int:
 
 
 def main(argv: list[str] | None = None) -> int:
-    # Windows consoles may use legacy encodings even when paths contain Unicode.
     for stream in (sys.stdout, sys.stderr):
         if hasattr(stream, "reconfigure"):
             stream.reconfigure(errors="backslashreplace")

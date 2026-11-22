@@ -66,7 +66,6 @@ def _replace(program: list[Mutation], index: int, params: dict[str, Any]) -> lis
 
 
 def proposals(program: list[Mutation], base_duration: float, sample_rate: int = 16000) -> Iterator[list[Mutation]]:
-    # Phase 1: remove whole operators, including larger chunks.
     for size in range(len(program) - 1, 0, -1):
         for start in range(len(program) - size + 1):
             yield program[:start] + program[start + size:]
@@ -75,7 +74,6 @@ def proposals(program: list[Mutation], base_duration: float, sample_rate: int = 
 
     for index, mutation in enumerate(program):
         p, kind = mutation.parameters, mutation.kind
-        # Phase 2: reduce temporal support for region-based mutations.
         if kind not in ("silence", "speed") and ("start" in p or "end" in p):
             start = float(p.get("start", 0))
             end = float(p.get("end", base_duration))
@@ -93,7 +91,6 @@ def proposals(program: list[Mutation], base_duration: float, sample_rate: int = 
                         q["end"] = round(b, 6)
                     yield _replace(program, index, q)
 
-        # Phase 3: finite, non-monotonic strength probes toward identity.
         if kind in ("silence", "dropout") and "duration_ms" in p:
             current = float(p["duration_ms"])
             values = {round(current * factor, 3) for factor in (0.5, 0.6, 0.7, 0.8, 0.9, 0.95)}

@@ -1,4 +1,4 @@
-"""Stack-neutral adapters. Execute only against staging or dry-run targets."""
+"""Target adapters."""
 
 from __future__ import annotations
 
@@ -42,7 +42,6 @@ def _load_callable(reference: str):
     module, separator, name = reference.partition(":")
     if not separator:
         raise ValueError("Python callable must be module:function")
-    # Scenario-local modules can be imported without installing the target.
     value: Any = importlib.import_module(module)
     for part in name.split("."):
         value = getattr(value, part)

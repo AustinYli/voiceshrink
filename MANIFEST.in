@@ -1,8 +1,6 @@
 include README.md
 include CHANGELOG.md
 include ROADMAP.md
-include PLAN_AUDIT.md
-include READINESS_REPORT.md
 include LICENSE
 include CONTRIBUTING.md
 include CODE_OF_CONDUCT.md

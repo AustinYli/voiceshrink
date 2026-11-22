@@ -56,7 +56,6 @@ def candidates(scenario: Scenario, duration: float, sample_rate: int = 16000,
         + learned_positions))
     singles: list[Mutation] = []
 
-    # Stage A: cheap single mutations in an escalating strength order.
     for kind in families:
         if kind == "silence":
             singles.extend(Mutation(kind, {"position": positions[1], "duration_ms": ms})
@@ -100,7 +99,6 @@ def candidates(scenario: Scenario, duration: float, sample_rate: int = 16000,
     for mutation in singles:
         yield [mutation]
 
-    # Stage B: same operators at distinct audio regions.
     for kind in families:
         if kind == "silence":
             for position in region_positions:
@@ -126,7 +124,6 @@ def candidates(scenario: Scenario, duration: float, sample_rate: int = 16000,
                 for position in (0.2, 0.8):
                     yield [Mutation(kind, {**base.parameters, "position": position})]
 
-    # Stage C: bounded pairwise combinations after all singles.
     max_pairs = int(config.get("max_pairs", 60))
     yielded_pairs = 0
     if max_pairs > 0:
@@ -138,8 +135,6 @@ def candidates(scenario: Scenario, duration: float, sample_rate: int = 16000,
             if yielded_pairs >= max_pairs:
                 break
 
-    # Optional bounded higher-order exploration. Disabled by default because each
-    # candidate can be expensive; a seed makes enabled searches reproducible.
     max_combinations = int(config.get("max_combinations", 0))
     combination_size = int(config.get("combination_size", 3))
     if max_combinations > 0 and combination_size >= 3:

@@ -119,7 +119,6 @@ def apply_mutation(audio: Audio, mutation: Mutation) -> Audio:
             raise ValueError("Resample target_rate must be between 1000 and source sample rate")
         region = samples[start:end]
         if len(region) > 1 and target_rate != audio.rate:
-            # Downsample and return to the original WAV rate so target contracts stay fixed.
             down_count = max(2, round(len(region) * target_rate / audio.rate))
             old_x = np.arange(len(region))
             down_x = np.linspace(0, len(region) - 1, down_count)
